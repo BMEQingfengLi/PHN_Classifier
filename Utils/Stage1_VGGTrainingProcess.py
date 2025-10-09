@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader
 from sklearn.metrics import recall_score
 from torch.autograd import Variable
 
-from Utils.PFEN import PFEN
+from Utils.VGG import VGG_patch as VGG
 from Utils.CreatDataset import CreatDataset
 from Utils.FocalLoss import Focalloss
 from Utils.MultiClassACC import MulticlassACCScore
@@ -97,7 +97,7 @@ def training(imgrootpth,
                                  num_workers=threadnum)
 
     # define model
-    model = PFEN(out_channel=2)
+    model = VGG(out_channel=2)
     model.cuda()
     model = nn.DataParallel(model)
 
